@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23F23DB51BE8221D003015C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F23DB41BE8221D003015C1 /* AppDelegate.swift */; };
+		23F23DB81BE8221D003015C1 /* Super_Aid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 23F23DB61BE8221D003015C1 /* Super_Aid.xcdatamodeld */; };
+		23F23DBA1BE8221D003015C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F23DB91BE8221D003015C1 /* ViewController.swift */; };
+		23F23DBD1BE8221D003015C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F23DBB1BE8221D003015C1 /* Main.storyboard */; };
+		23F23DBF1BE8221D003015C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F23DBE1BE8221D003015C1 /* Images.xcassets */; };
+		23F23DC21BE8221D003015C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F23DC01BE8221D003015C1 /* LaunchScreen.xib */; };
+		23F23DCE1BE8221D003015C1 /* Super_AidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F23DCD1BE8221D003015C1 /* Super_AidTests.swift */; };
+		52141C1C1C018CFE00469BC6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52141C1B1C018CFE00469BC6 /* Contact.swift */; };
+		5240683B1C03307E00BE26B5 /* MedTracker_SB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5240683A1C03307E00BE26B5 /* MedTracker_SB.storyboard */; };
+		5240683D1C0331D700BE26B5 /* MedTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5240683C1C0331D700BE26B5 /* MedTrackerViewController.swift */; };
+		524F1AFA1C02F9430082A685 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F1AF91C02F9430082A685 /* ContactViewController.swift */; };
+		524F1AFC1C02F95A0082A685 /* ContactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F1AFB1C02F95A0082A685 /* ContactTableViewController.swift */; };
+		524F1AFF1C02F9800082A685 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524F1AFE1C02F9800082A685 /* ContactTableViewCell.swift */; };
+		5281F1411BEFF4C50094DB3C /* Fallsafe_SB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5281F1401BEFF4C50094DB3C /* Fallsafe_SB.storyboard */; };
+		5286D7891BF008E9004B01B5 /* fallsafe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286D7881BF008E9004B01B5 /* fallsafe.swift */; };
+		5286D78D1BF022ED004B01B5 /* alertMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286D78C1BF022ED004B01B5 /* alertMessages.swift */; };
+		5286D78F1BF029FB004B01B5 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5286D78E1BF029FB004B01B5 /* settings.swift */; };
+		52B6B4841C03CFB4004BBD4F /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B4831C03CFB4004BBD4F /* MedicationTableViewCell.swift */; };
+		52B6B4871C03CFCD004BBD4F /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B4861C03CFCD004BBD4F /* Medication.swift */; };
+		52B6B4891C03CFE5004BBD4F /* MedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B4881C03CFE5004BBD4F /* MedicationTableViewController.swift */; };
+		52B6B48B1C03D009004BBD4F /* MedicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6B48A1C03D009004BBD4F /* MedicationViewController.swift */; };
+		FC00865C1C01D97A00AA6B58 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0086571C01D97A00AA6B58 /* Location.swift */; };
+		FC00865D1C01D97A00AA6B58 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0086581C01D97A00AA6B58 /* LocationTableViewCell.swift */; };
+		FC00865E1C01D97A00AA6B58 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0086591C01D97A00AA6B58 /* LocationTableViewController.swift */; };
+		FC00865F1C01D97A00AA6B58 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC00865A1C01D97A00AA6B58 /* LocationViewController.swift */; };
+		FC0086601C01D97A00AA6B58 /* TakeMeThere_SB.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC00865B1C01D97A00AA6B58 /* TakeMeThere_SB.storyboard */; };
+		FC0086621C01DA9800AA6B58 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC0086611C01DA9800AA6B58 /* Contacts.framework */; };
+		FCE7D9261BF14B5700C85479 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE7D9251BF14B5700C85479 /* CoreMotion.framework */; };
+		FCE7D9281BF14B5C00C85479 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE7D9271BF14B5C00C85479 /* CoreLocation.framework */; };
+		FCE7D92A1BF14B7300C85479 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE7D9291BF14B7300C85479 /* MapKit.framework */; };
+		FCE7D92C1BF14B8D00C85479 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE7D92B1BF14B8D00C85479 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		23F23DC81BE8221D003015C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23F23DA71BE8221D003015C1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23F23DAE1BE8221D003015C1;
+			remoteInfo = "Super Aid";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		23F23DAF1BE8221D003015C1 /* Super Aid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Super Aid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F23DB31BE8221D003015C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F23DB41BE8221D003015C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23F23DB71BE8221D003015C1 /* Super_Aid.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Super_Aid.xcdatamodel; sourceTree = "<group>"; };
+		23F23DB91BE8221D003015C1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		23F23DBC1BE8221D003015C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		23F23DBE1BE8221D003015C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		23F23DC11BE8221D003015C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		23F23DC71BE8221D003015C1 /* Super AidTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Super AidTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F23DCC1BE8221D003015C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F23DCD1BE8221D003015C1 /* Super_AidTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Super_AidTests.swift; sourceTree = "<group>"; };
+		52141C1B1C018CFE00469BC6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		5240683A1C03307E00BE26B5 /* MedTracker_SB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MedTracker_SB.storyboard; sourceTree = "<group>"; };
+		5240683C1C0331D700BE26B5 /* MedTrackerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedTrackerViewController.swift; sourceTree = "<group>"; };
+		524F1AF91C02F9430082A685 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		524F1AFB1C02F95A0082A685 /* ContactTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewController.swift; sourceTree = "<group>"; };
+		524F1AFE1C02F9800082A685 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		5281F1401BEFF4C50094DB3C /* Fallsafe_SB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Fallsafe_SB.storyboard; path = "Super Aid/Fallsafe_SB.storyboard"; sourceTree = SOURCE_ROOT; };
+		5286D7881BF008E9004B01B5 /* fallsafe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fallsafe.swift; sourceTree = "<group>"; };
+		5286D78C1BF022ED004B01B5 /* alertMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = alertMessages.swift; sourceTree = "<group>"; };
+		5286D78E1BF029FB004B01B5 /* settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
+		52B6B4831C03CFB4004BBD4F /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
+		52B6B4861C03CFCD004BBD4F /* Medication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
+		52B6B4881C03CFE5004BBD4F /* MedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationTableViewController.swift; sourceTree = "<group>"; };
+		52B6B48A1C03D009004BBD4F /* MedicationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationViewController.swift; sourceTree = "<group>"; };
+		FC0086571C01D97A00AA6B58 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = "Take Me There/Location.swift"; sourceTree = "<group>"; };
+		FC0086581C01D97A00AA6B58 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTableViewCell.swift; path = "Take Me There/LocationTableViewCell.swift"; sourceTree = "<group>"; };
+		FC0086591C01D97A00AA6B58 /* LocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationTableViewController.swift; path = "Take Me There/LocationTableViewController.swift"; sourceTree = "<group>"; };
+		FC00865A1C01D97A00AA6B58 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = "Take Me There/LocationViewController.swift"; sourceTree = "<group>"; };
+		FC00865B1C01D97A00AA6B58 /* TakeMeThere_SB.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TakeMeThere_SB.storyboard; path = "Take Me There/TakeMeThere_SB.storyboard"; sourceTree = "<group>"; };
+		FC0086611C01DA9800AA6B58 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		FCE7D9251BF14B5700C85479 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		FCE7D9271BF14B5C00C85479 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FCE7D9291BF14B7300C85479 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FCE7D92B1BF14B8D00C85479 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23F23DAC1BE8221D003015C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0086621C01DA9800AA6B58 /* Contacts.framework in Frameworks */,
+				FCE7D92C1BF14B8D00C85479 /* UIKit.framework in Frameworks */,
+				FCE7D92A1BF14B7300C85479 /* MapKit.framework in Frameworks */,
+				FCE7D9281BF14B5C00C85479 /* CoreLocation.framework in Frameworks */,
+				FCE7D9261BF14B5700C85479 /* CoreMotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23F23DC41BE8221D003015C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23F23DA61BE8221D003015C1 = {
+			isa = PBXGroup;
+			children = (
+				FC0086611C01DA9800AA6B58 /* Contacts.framework */,
+				FCE7D92B1BF14B8D00C85479 /* UIKit.framework */,
+				FCE7D9291BF14B7300C85479 /* MapKit.framework */,
+				FCE7D9271BF14B5C00C85479 /* CoreLocation.framework */,
+				FCE7D9251BF14B5700C85479 /* CoreMotion.framework */,
+				23F23DB11BE8221D003015C1 /* Super Aid */,
+				23F23DCA1BE8221D003015C1 /* Super AidTests */,
+				23F23DB01BE8221D003015C1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		23F23DB01BE8221D003015C1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23F23DAF1BE8221D003015C1 /* Super Aid.app */,
+				23F23DC71BE8221D003015C1 /* Super AidTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23F23DB11BE8221D003015C1 /* Super Aid */ = {
+			isa = PBXGroup;
+			children = (
+				5281F13F1BEFF4980094DB3C /* FallSafe */,
+				524068391C03304B00BE26B5 /* MedTracker */,
+				FCE7D9191BF144F700C85479 /* TakeMeThere */,
+				23F23DB41BE8221D003015C1 /* AppDelegate.swift */,
+				23F23DB91BE8221D003015C1 /* ViewController.swift */,
+				23F23DBB1BE8221D003015C1 /* Main.storyboard */,
+				23F23DBE1BE8221D003015C1 /* Images.xcassets */,
+				23F23DC01BE8221D003015C1 /* LaunchScreen.xib */,
+				23F23DB61BE8221D003015C1 /* Super_Aid.xcdatamodeld */,
+				23F23DB21BE8221D003015C1 /* Supporting Files */,
+			);
+			path = "Super Aid";
+			sourceTree = "<group>";
+		};
+		23F23DB21BE8221D003015C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23F23DB31BE8221D003015C1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		23F23DCA1BE8221D003015C1 /* Super AidTests */ = {
+			isa = PBXGroup;
+			children = (
+				23F23DCD1BE8221D003015C1 /* Super_AidTests.swift */,
+				23F23DCB1BE8221D003015C1 /* Supporting Files */,
+			);
+			path = "Super AidTests";
+			sourceTree = "<group>";
+		};
+		23F23DCB1BE8221D003015C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23F23DCC1BE8221D003015C1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52141C1D1C01981F00469BC6 /* Emergency Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				52141C1B1C018CFE00469BC6 /* Contact.swift */,
+				524F1AF91C02F9430082A685 /* ContactViewController.swift */,
+				524F1AFB1C02F95A0082A685 /* ContactTableViewController.swift */,
+				524F1AFE1C02F9800082A685 /* ContactTableViewCell.swift */,
+			);
+			name = "Emergency Contacts";
+			sourceTree = "<group>";
+		};
+		524068391C03304B00BE26B5 /* MedTracker */ = {
+			isa = PBXGroup;
+			children = (
+				5240683A1C03307E00BE26B5 /* MedTracker_SB.storyboard */,
+				52B6B4821C03CF9B004BBD4F /* Medication */,
+				5240683C1C0331D700BE26B5 /* MedTrackerViewController.swift */,
+			);
+			name = MedTracker;
+			sourceTree = "<group>";
+		};
+		5281F13F1BEFF4980094DB3C /* FallSafe */ = {
+			isa = PBXGroup;
+			children = (
+				5281F1401BEFF4C50094DB3C /* Fallsafe_SB.storyboard */,
+				52141C1D1C01981F00469BC6 /* Emergency Contacts */,
+				5286D7881BF008E9004B01B5 /* fallsafe.swift */,
+				5286D78C1BF022ED004B01B5 /* alertMessages.swift */,
+				5286D78E1BF029FB004B01B5 /* settings.swift */,
+			);
+			name = FallSafe;
+			sourceTree = "<group>";
+		};
+		52B6B4821C03CF9B004BBD4F /* Medication */ = {
+			isa = PBXGroup;
+			children = (
+				52B6B4831C03CFB4004BBD4F /* MedicationTableViewCell.swift */,
+				52B6B4861C03CFCD004BBD4F /* Medication.swift */,
+				52B6B4881C03CFE5004BBD4F /* MedicationTableViewController.swift */,
+				52B6B48A1C03D009004BBD4F /* MedicationViewController.swift */,
+			);
+			name = Medication;
+			sourceTree = "<group>";
+		};
+		FCE7D9191BF144F700C85479 /* TakeMeThere */ = {
+			isa = PBXGroup;
+			children = (
+				FC0086571C01D97A00AA6B58 /* Location.swift */,
+				FC0086581C01D97A00AA6B58 /* LocationTableViewCell.swift */,
+				FC0086591C01D97A00AA6B58 /* LocationTableViewController.swift */,
+				FC00865A1C01D97A00AA6B58 /* LocationViewController.swift */,
+				FC00865B1C01D97A00AA6B58 /* TakeMeThere_SB.storyboard */,
+			);
+			name = TakeMeThere;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		23F23DAE1BE8221D003015C1 /* Super Aid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23F23DD11BE8221D003015C1 /* Build configuration list for PBXNativeTarget "Super Aid" */;
+			buildPhases = (
+				23F23DAB1BE8221D003015C1 /* Sources */,
+				23F23DAC1BE8221D003015C1 /* Frameworks */,
+				23F23DAD1BE8221D003015C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Super Aid";
+			productName = "Super Aid";
+			productReference = 23F23DAF1BE8221D003015C1 /* Super Aid.app */;
+			productType = "com.apple.product-type.application";
+		};
+		23F23DC61BE8221D003015C1 /* Super AidTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23F23DD41BE8221D003015C1 /* Build configuration list for PBXNativeTarget "Super AidTests" */;
+			buildPhases = (
+				23F23DC31BE8221D003015C1 /* Sources */,
+				23F23DC41BE8221D003015C1 /* Frameworks */,
+				23F23DC51BE8221D003015C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23F23DC91BE8221D003015C1 /* PBXTargetDependency */,
+			);
+			name = "Super AidTests";
+			productName = "Super AidTests";
+			productReference = 23F23DC71BE8221D003015C1 /* Super AidTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23F23DA71BE8221D003015C1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Super Aid";
+				TargetAttributes = {
+					23F23DAE1BE8221D003015C1 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					23F23DC61BE8221D003015C1 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 23F23DAE1BE8221D003015C1;
+					};
+				};
+			};
+			buildConfigurationList = 23F23DAA1BE8221D003015C1 /* Build configuration list for PBXProject "Super Aid" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 23F23DA61BE8221D003015C1;
+			productRefGroup = 23F23DB01BE8221D003015C1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23F23DAE1BE8221D003015C1 /* Super Aid */,
+				23F23DC61BE8221D003015C1 /* Super AidTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		23F23DAD1BE8221D003015C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F23DBD1BE8221D003015C1 /* Main.storyboard in Resources */,
+				23F23DC21BE8221D003015C1 /* LaunchScreen.xib in Resources */,
+				23F23DBF1BE8221D003015C1 /* Images.xcassets in Resources */,
+				FC0086601C01D97A00AA6B58 /* TakeMeThere_SB.storyboard in Resources */,
+				5281F1411BEFF4C50094DB3C /* Fallsafe_SB.storyboard in Resources */,
+				5240683B1C03307E00BE26B5 /* MedTracker_SB.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23F23DC51BE8221D003015C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23F23DAB1BE8221D003015C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F23DBA1BE8221D003015C1 /* ViewController.swift in Sources */,
+				52141C1C1C018CFE00469BC6 /* Contact.swift in Sources */,
+				FC00865C1C01D97A00AA6B58 /* Location.swift in Sources */,
+				5240683D1C0331D700BE26B5 /* MedTrackerViewController.swift in Sources */,
+				52B6B4891C03CFE5004BBD4F /* MedicationTableViewController.swift in Sources */,
+				52B6B4871C03CFCD004BBD4F /* Medication.swift in Sources */,
+				52B6B48B1C03D009004BBD4F /* MedicationViewController.swift in Sources */,
+				23F23DB81BE8221D003015C1 /* Super_Aid.xcdatamodeld in Sources */,
+				524F1AFF1C02F9800082A685 /* ContactTableViewCell.swift in Sources */,
+				5286D78F1BF029FB004B01B5 /* settings.swift in Sources */,
+				524F1AFC1C02F95A0082A685 /* ContactTableViewController.swift in Sources */,
+				52B6B4841C03CFB4004BBD4F /* MedicationTableViewCell.swift in Sources */,
+				5286D78D1BF022ED004B01B5 /* alertMessages.swift in Sources */,
+				23F23DB51BE8221D003015C1 /* AppDelegate.swift in Sources */,
+				FC00865F1C01D97A00AA6B58 /* LocationViewController.swift in Sources */,
+				FC00865E1C01D97A00AA6B58 /* LocationTableViewController.swift in Sources */,
+				524F1AFA1C02F9430082A685 /* ContactViewController.swift in Sources */,
+				FC00865D1C01D97A00AA6B58 /* LocationTableViewCell.swift in Sources */,
+				5286D7891BF008E9004B01B5 /* fallsafe.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23F23DC31BE8221D003015C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F23DCE1BE8221D003015C1 /* Super_AidTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23F23DC91BE8221D003015C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23F23DAE1BE8221D003015C1 /* Super Aid */;
+			targetProxy = 23F23DC81BE8221D003015C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		23F23DBB1BE8221D003015C1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23F23DBC1BE8221D003015C1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		23F23DC01BE8221D003015C1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23F23DC11BE8221D003015C1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		23F23DCF1BE8221D003015C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		23F23DD01BE8221D003015C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		23F23DD21BE8221D003015C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Super Aid/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Super-Aid.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		23F23DD31BE8221D003015C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Super Aid/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Super-Aid.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		23F23DD51BE8221D003015C1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Super AidTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Super-Aid.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Super Aid.app/Super Aid";
+			};
+			name = Debug;
+		};
+		23F23DD61BE8221D003015C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Super AidTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Super-Aid.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Super Aid.app/Super Aid";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23F23DAA1BE8221D003015C1 /* Build configuration list for PBXProject "Super Aid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23F23DCF1BE8221D003015C1 /* Debug */,
+				23F23DD01BE8221D003015C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23F23DD11BE8221D003015C1 /* Build configuration list for PBXNativeTarget "Super Aid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23F23DD21BE8221D003015C1 /* Debug */,
+				23F23DD31BE8221D003015C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23F23DD41BE8221D003015C1 /* Build configuration list for PBXNativeTarget "Super AidTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23F23DD51BE8221D003015C1 /* Debug */,
+				23F23DD61BE8221D003015C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		23F23DB61BE8221D003015C1 /* Super_Aid.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				23F23DB71BE8221D003015C1 /* Super_Aid.xcdatamodel */,
+			);
+			currentVersion = 23F23DB71BE8221D003015C1 /* Super_Aid.xcdatamodel */;
+			path = Super_Aid.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 23F23DA71BE8221D003015C1 /* Project object */;
+}
