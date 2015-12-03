@@ -18,6 +18,10 @@
  *   version 2.0
  *   - detects fall by acceleration
  *
+ *   version 3.0
+ *   - added send notification function
+ *   - added delayed monitor on accelerometer and gyroscope
+ *
  ************************************************************/
 
 import UIKit
@@ -60,13 +64,12 @@ class fallsafe: UIViewController {
     override func viewDidLoad() {
         
         self.resetMaxVal()
-        
         //set update interval
         motionManager.accelerometerUpdateInterval = 0.2
         motionManager.gyroUpdateInterval = 0.2
         
         //record data
-        /*
+        
         motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: {(accelerometerData: CMAccelerometerData?, error: NSError?) -> Void
             in
             self.outputAccelerationData(accelerometerData!.acceleration)
@@ -81,59 +84,42 @@ class fallsafe: UIViewController {
             if(error != nil){
                 print("\(error)")
             }
-        }) */
+        })
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        scheduledTimerWithTimeInterval()
     }
     
-    /*
+
     func outputAccelerationData(acceleration: CMAcceleration){
-        accX?.text = "\(acceleration.x).2fg"
         if fabs(acceleration.x) > fabs(curMaxAccX){
             curMaxAccX = acceleration.x
         }
         
-        accY?.text = "\(acceleration.y).2fg"
         if fabs(acceleration.y) > fabs(curMaxAccY){
             curMaxAccY = acceleration.y
         }
         
-        accZ?.text = "\(acceleration.z).2fg"
         if fabs(acceleration.z) > fabs(curMaxAccZ){
             curMaxAccZ = acceleration.z
         }
         
-        maxAccX?.text = "\(curMaxAccX).2f"
-        maxAccY?.text = "\(curMaxAccY).2f"
-        maxAccZ?.text = "\(curMaxAccZ).2f"
     }
-    */
     
-    /*
     func outputRotationData(rotation: CMRotationRate){
-        rotX?.text = "\(rotation.x).2fr/s"
         if fabs(rotation.x) > fabs(curMaxRotX){
             curMaxRotX = rotation.x
         }
         
-        rotY?.text = "\(rotation.y).2fr/s"
         if fabs(rotation.y) > fabs(curMaxRotY){
             curMaxRotY = rotation.y
         }
         
-        rotZ?.text = "\rotation.z).2fr/s"
         if fabs(rotation.z) > fabs(curMaxRotZ){
             curMaxRotZ = rotation.z
         }
         
-        maxRotX?.text = "\(curMaxRotX).2f"
-        maxRotY?.text = "\(curMaxRotY).2f"
-        maxRotZ?.text = "\(curMaxRotZ).2f"
-        
-        
     }
-    */
     
     
     func updateVecSumAcc(){
@@ -190,11 +176,22 @@ class fallsafe: UIViewController {
     
     
     //helper function
-    func runAfterDelay(delay: NSTimeInterval, block: dispatch_block_t) {
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-        dispatch_after(time, dispatch_get_main_queue(), block)
-        
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
+    
+    //events that update itself every 0.1 second
+    func scheduledTimerWithTimeInterval(){
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("updateVecSumAcc"), userInfo: nil, repeats: true)//updateVecSumAcc every 0.1s
+        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("updateVecSumRot"), userInfo: nil, repeats: true)//updateVecSumRot every 0.1s
+        delay(2) {_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("didFallOccur"), userInfo: nil, repeats: true)} //check for fall every 0.1s}
+    }
+    
     
     // outputAbsoluteAccelerationHistoryAndDetectFall
     // POST: appends the absolute acceleration (i.e. sqrt(accX^2 + accY^2 + accZ^2)) to

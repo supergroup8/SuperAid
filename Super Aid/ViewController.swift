@@ -11,6 +11,10 @@
  *   - linked fallSafe button to fallSafe_SB.storyboard     *
  *   - medTracker and TakeMeThere coming soon               *
  *                                                          *
+ *   Version 2.0                                            *
+ *   - completed medTracker and takeMeThere interface       *
+ *   - linked medTracker and takeMeThere buttons to their   *
+ *     respective storyboards                               *
  *                                                          *
  ************************************************************/
 

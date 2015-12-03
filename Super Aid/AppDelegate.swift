@@ -6,8 +6,9 @@
 //  References
 //  Brian Advent's local notification YouTube tutorial
 //
-//
-//
+//  Version 3.0
+//  - requests user permission to send local notifications
+//  - added two actions to the category for the local notifications
 
 import UIKit
 import CoreData
@@ -63,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, handActionWithIdentifier identifier:String!, completionHandler: (() -> Void)!) {
         
         if identifier == "FirstAction" {
-            NSNotificationCenter.defaultCenter().postNotificationName("actionOne", object: nil)
+            // NSNotificationCenter.defaultCenter().postNotificationName("actionOne", object: nil)
             
         } else if identifier == "SecondAction" {
             
