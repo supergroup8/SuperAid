@@ -6,6 +6,8 @@
  *   Authors:
  *   Jerry Chen
  *   Gary Atwal
+ *   John Xiang
+ *   Victor Yun
  *
  *   Version 1.0
  *   - created back button on navigation bar
@@ -15,6 +17,7 @@
  *
  *   version 2.0
  *   - detects fall by acceleration
+ *
  ************************************************************/
 
 import UIKit
@@ -255,6 +258,30 @@ class fallsafe: UIViewController {
         //      if (!stationary || walking || running || automotive){ didUserMoveAfterFall = true; exit }
         //      else { didUserMoveAfterFall = false }
     }
+     /*
+    func scheduleNotification () {
+        
+        // checks if permission is granted for notification
+        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
+        
+        if settings.types == .None {
+            
+            let ac = UIAlertController(title: "Notification failed to send", message: "Permission not granted. Please enable notificaiton permissions in the settings.", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        
+        // create notification object
+        let notification = UILocalNotification()
+        let dateTime = NSDate()
+        // initialize properties
+        notification.fireDate = dateTime
+        notification.alertBody = "Fall detected"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+    } */
 
     // returns to main menu when back button pressed
     @IBAction func backPressed(sender: AnyObject) {
