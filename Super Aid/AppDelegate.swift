@@ -18,17 +18,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
+    // requests for permission to send local notifications
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
+        
+        // actions
+        let firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        firstAction.identifier = "FirstAction"
+        firstAction.title = "No"
+        firstAction.activationMode = UIUserNotificationActivationMode.Background
+        firstAction.destructive = false
+        firstAction.authenticationRequired = false
+        
+        let secondAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        secondAction.identifier = "SecondAction"
+        secondAction.title = "Yes"
+        secondAction.activationMode = UIUserNotificationActivationMode.Foreground
+        secondAction.destructive = true
+        secondAction.authenticationRequired = false
+        
+        // category
+        
+        // initiate category object
+        let firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        firstCategory.identifier = "FirstCategory"
+        // array of actions containing firstAction and secondAction
+        let actions = [firstAction, secondAction]
+        firstCategory.setActions(actions, forContext: UIUserNotificationActionContext.Minimal)
+        firstCategory.setActions(actions, forContext: UIUserNotificationActionContext.Default)
+        
+        // array of all categories
+        let categories = Set<UIUserNotificationCategory>(arrayLiteral: firstCategory)
+        
         // request permission to send local notifications
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: categories)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         return true
     }
 
+    // completion handler functions
+    // POST: performs an action depending on the user's selected action when the notification sends
+    //       firstAction pressed: update log file that a false fall has been detected
+    //       secondAction pressed: fall detected, post notifiacation for app to call emergency contacts
     func application(application: UIApplication, handActionWithIdentifier identifier:String!, completionHandler: (() -> Void)!) {
         
+        if identifier == "FirstAction" {
+            NSNotificationCenter.defaultCenter().postNotificationName("actionOne", object: nil)
+            
+        } else if identifier == "SecondAction" {
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("actionTwo", object: nil)
+        }
+        
+        completionHandler()
     }
     
     func applicationWillResignActive(application: UIApplication) {

@@ -25,29 +25,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendNotificationLockScreen()
 
     }
-    
-    func sendNotificationLockScreen() {
-        
-        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
-        if settings.types == .None {
-            
-            let ac = UIAlertController(title: "Alert not sent", message: "Permission to send notifications not granted", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
-            return
-        }
-        
-        let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 2)
-        notification.alertBody = "Fall Detected"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["responsded": "true"]
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-    }
-    
     
     // forces app to be in portrait mode
     override func shouldAutorotate() -> Bool {

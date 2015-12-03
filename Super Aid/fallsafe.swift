@@ -283,6 +283,29 @@ class fallsafe: UIViewController {
         
     } */
 
+    // posts a notificaiton via user selected method (ie. banner, alert)
+    func sendNotification() {
+        
+        // check if permission is granted for notifications
+        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
+        if settings.types == .None {
+            
+            let ac = UIAlertController(title: "Alert not sent", message: "Permission to send notifications not granted", preferredStyle: .Alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            presentViewController(ac, animated: true, completion: nil)
+            return
+        }
+        
+        // initialize local notification object and set properties
+        let notification = UILocalNotification()
+        notification.category = "FirstCategory"
+        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        notification.alertBody = "Fall Detected. Did you fall?"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["responsded": "true"]
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+
     // returns to main menu when back button pressed
     @IBAction func backPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
