@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondAction.destructive = true
         secondAction.authenticationRequired = false
         
+        
         // category
         
         // initiate category object
@@ -46,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let actions = [firstAction, secondAction]
         firstCategory.setActions(actions, forContext: UIUserNotificationActionContext.Minimal)
         firstCategory.setActions(actions, forContext: UIUserNotificationActionContext.Default)
+
         
         // array of all categories
         let categories = Set<UIUserNotificationCategory>(arrayLiteral: firstCategory)

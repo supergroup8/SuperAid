@@ -32,6 +32,8 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UINavigation
         super.viewDidLoad()
 
         name.delegate = self
+        alertMessage.delegate = self
+        number.delegate = self
         
         // set up views if editing an existing contact
         if let contact = contact {
@@ -58,7 +60,7 @@ class ContactViewController: UIViewController, UITextFieldDelegate, UINavigation
     func textFieldDidEndEditing(textField: UITextField) {
     
         checkValidContact()
-        navigationItem.title = textField.text
+        //navigationItem.title = textField.text
     }
     
     // disable save button if text field is empty

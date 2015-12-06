@@ -20,7 +20,7 @@ class Medication: NSObject, NSCoding {
     
     // MARK: Properties
     var name: String = ""
-    var startDate: String = ""
+    var daysToTake:[String] = []
     var endDate: String = ""
     var dose: String = ""
     var medType: String = ""
@@ -35,7 +35,7 @@ class Medication: NSObject, NSCoding {
         
         // declare key strings for pesistance store
         static let nameKey = "name"
-        static let startKey = "start"
+        static let daysKey = "days"
         static let endKey = "end"
         static let doseKey = "dose"
         static let typeKey = "type"
@@ -43,9 +43,9 @@ class Medication: NSObject, NSCoding {
     
     // MARK: Initialization
     
-    init?(name: String, start: String, end: String, dose: String, type: String) {
+    init?(name: String, days: [String], end: String, dose: String, type: String) {
         self.name = name
-        self.startDate = start
+        self.daysToTake = days
         self.endDate = end
         self.dose = dose
         self.medType = type
@@ -53,7 +53,7 @@ class Medication: NSObject, NSCoding {
         super.init()
         
         // failed initilization cases
-        if name.isEmpty || startDate.isEmpty || endDate.isEmpty || dose.isEmpty || medType.isEmpty {
+        if name.isEmpty || daysToTake.isEmpty || endDate.isEmpty || dose.isEmpty || medType.isEmpty {
             
             return nil
         }
@@ -64,7 +64,7 @@ class Medication: NSObject, NSCoding {
         
         //encode values
         aCoder.encodeObject(name, forKey: PropertyKey.nameKey)
-        aCoder.encodeObject(startDate, forKey: PropertyKey.startKey)
+        aCoder.encodeObject(daysToTake, forKey: PropertyKey.daysKey)
         aCoder.encodeObject(endDate, forKey: PropertyKey.endKey)
         aCoder.encodeObject(dose, forKey: PropertyKey.doseKey)
         aCoder.encodeObject(medType, forKey: PropertyKey.typeKey)
@@ -74,14 +74,14 @@ class Medication: NSObject, NSCoding {
         
         //decode/ unarchives the info for an object, force type cast
         let name = aDecoder.decodeObjectForKey(PropertyKey.nameKey) as! String
-        let start = aDecoder.decodeObjectForKey(PropertyKey.startKey) as! String
+        let days = aDecoder.decodeObjectForKey(PropertyKey.daysKey) as! [String]
         let end = aDecoder.decodeObjectForKey(PropertyKey.endKey) as! String
         let dose = aDecoder.decodeObjectForKey(PropertyKey.doseKey) as! String
         let type = aDecoder.decodeObjectForKey(PropertyKey.typeKey) as! String
         
         
         // Must call designated initilizer.
-        self.init(name: name, start: start, end: end, dose: dose, type: type)
+        self.init(name: name, days: days, end: end, dose: dose, type: type)
     }
     
 }

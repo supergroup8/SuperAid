@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var medTracker_: UIButton!
     @IBOutlet weak var takeMeThere_: UIButton!
     @IBOutlet weak var fallSafe_: UIButton!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()

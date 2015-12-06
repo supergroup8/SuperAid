@@ -87,7 +87,9 @@ class fallsafe: UIViewController {
         })
         
         super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "callContacts:", name: "actionTwo", object: nil)
         scheduledTimerWithTimeInterval()
+        sendNotification()
     }
     
 
@@ -121,7 +123,6 @@ class fallsafe: UIViewController {
         
     }
     
-    
     func updateVecSumAcc(){
         if vecSumAcc.count == 20 {//store up to 2s
             vecSumAcc.removeLast()
@@ -135,8 +136,6 @@ class fallsafe: UIViewController {
         }
         vecSumRot.append(sqrt(pow(curMaxRotX,2) + pow(curMaxRotY,2) + pow(curMaxRotZ,2)))
     }
-    
-    
     
     //detecting possible start of the fall
     func freeFallDetect() -> Bool{
@@ -255,32 +254,8 @@ class fallsafe: UIViewController {
         //      if (!stationary || walking || running || automotive){ didUserMoveAfterFall = true; exit }
         //      else { didUserMoveAfterFall = false }
     }
-     /*
-    func scheduleNotification () {
-        
-        // checks if permission is granted for notification
-        guard let settings = UIApplication.sharedApplication().currentUserNotificationSettings() else { return }
-        
-        if settings.types == .None {
-            
-            let ac = UIAlertController(title: "Notification failed to send", message: "Permission not granted. Please enable notificaiton permissions in the settings.", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            presentViewController(ac, animated: true, completion: nil)
-            return
-        }
-        
-        // create notification object
-        let notification = UILocalNotification()
-        let dateTime = NSDate()
-        // initialize properties
-        notification.fireDate = dateTime
-        notification.alertBody = "Fall detected"
-        notification.soundName = UILocalNotificationDefaultSoundName
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-    } */
 
-    // posts a notificaiton via user selected method (ie. banner, alert)
+    // schedules a notificaiton via user selected method (ie. banner, alert)
     func sendNotification() {
         
         // check if permission is granted for notifications
@@ -292,7 +267,7 @@ class fallsafe: UIViewController {
             presentViewController(ac, animated: true, completion: nil)
             return
         }
-        
+
         // initialize local notification object and set properties
         let notification = UILocalNotification()
         notification.category = "FirstCategory"
@@ -301,6 +276,11 @@ class fallsafe: UIViewController {
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["responsded": "true"]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
+    // function that calls the user's emergency contacts
+    func callContacts(notification:NSNotification) {
+        
     }
 
     // returns to main menu when back button pressed

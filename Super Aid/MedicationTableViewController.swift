@@ -46,8 +46,8 @@ class MedicationTableViewController: UITableViewController {
     
     func loadSampleMedication() {
         
-        let m1 = Medication(name: "Tyenol", start: "10/10/2015", end: "30/12/2015", dose: "Three daily", type: "painkiller")!
-        let m2 = Medication(name: "Altrovent", start: "11/11/2015", end: "01/01/2016", dose: "500 mg", type: "Respiratory Agent")!
+        let m1 = Medication(name: "Tyenol", days: ["Mon", "Wed", "Fri"], end: "30-12-2015", dose: "325 mg", type: "painkiller")!
+        let m2 = Medication(name: "Altrovent", days: ["Tue", "Thu"], end: "01-01-2016", dose: "500 mg", type: "Respiratory Agent")!
         
         medications += [m1, m2]
     }
@@ -113,16 +113,6 @@ class MedicationTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
     
     }
-
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
     
     // MARK: - Navigation
     
@@ -191,6 +181,7 @@ class MedicationTableViewController: UITableViewController {
         let isSucessfulSave = NSKeyedArchiver.archiveRootObject(medications, toFile: Medication.ArchiveURL.path!)
         
         if !isSucessfulSave {
+            // error saving
             print("Failed to save medications")
         }
     }
