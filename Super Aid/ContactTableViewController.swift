@@ -196,7 +196,7 @@ class ContactTableViewController: UITableViewController, MFMessageComposeViewCon
     }
     
     // sends text messages to user's emergeny contacts
-    func sendText() {
+    func sendText(contacts: [Contact]) {
         if MFMessageComposeViewController.canSendText() {
             
             let controller = MFMessageComposeViewController()

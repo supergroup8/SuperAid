@@ -1,5 +1,5 @@
 /************************************************************
- *                                                          
+ *
  *   fallSafe.swift
  *   Super Aid - Group 8
  *
@@ -28,7 +28,7 @@ import UIKit
 import CoreMotion
 
 class fallsafe: UIViewController {
-
+    
     //Variables
     var curMaxAccX: Double = 0.0
     var curMaxAccY: Double = 0.0
@@ -37,9 +37,6 @@ class fallsafe: UIViewController {
     var curMaxRotY: Double = 0.0
     var curMaxRotZ: Double = 0.0
     var motionManager = CMMotionManager()
-    
-    var isFall: Bool = false
-    var didUserMoveAfterFall: Bool = false
     
     var vecSumAcc: [Double] = []
     var vecSumRot: [Double] = []
@@ -65,82 +62,65 @@ class fallsafe: UIViewController {
         
         self.resetMaxVal()
         //set update interval
-        motionManager.accelerometerUpdateInterval = 0.2
-        motionManager.gyroUpdateInterval = 0.2
-        
-        //record data
-        
-        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: {(accelerometerData: CMAccelerometerData?, error: NSError?) -> Void
-            in
-            self.outputAccelerationData(accelerometerData!.acceleration)
-            if(error != nil){
-                print("\(error)")
-            }
-        })
-        
-        motionManager.startGyroUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: {(gyroData: CMGyroData?, error: NSError?) -> Void
-            in
-            self.outputRotationData(gyroData!.rotationRate)
-            if(error != nil){
-                print("\(error)")
-            }
-        })
+        motionManager.accelerometerUpdateInterval = 0.1
+        motionManager.gyroUpdateInterval = 0.1
         
         super.viewDidLoad()
-        scheduledTimerWithTimeInterval()
-        sendNotification()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textContacts:", name: "actionTwo", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "callContacts:", name: "actionTwo", object: nil)
     }
     
-
-    func outputAccelerationData(acceleration: CMAcceleration){
-        if fabs(acceleration.x) > fabs(curMaxAccX){
-            curMaxAccX = acceleration.x
-        }
-        
-        if fabs(acceleration.y) > fabs(curMaxAccY){
-            curMaxAccY = acceleration.y
-        }
-        
-        if fabs(acceleration.z) > fabs(curMaxAccZ){
-            curMaxAccZ = acceleration.z
-        }
-        
+    
+    /*func outputAccelerationData(acceleration: CMAcceleration){
+    if fabs(acceleration.x) > fabs(curMaxAccX){
+    curMaxAccX = acceleration.x
+    }
+    
+    if fabs(acceleration.y) > fabs(curMaxAccY){
+    curMaxAccY = acceleration.y
+    }
+    
+    if fabs(acceleration.z) > fabs(curMaxAccZ){
+    curMaxAccZ = acceleration.z
+    }
+    
     }
     
     func outputRotationData(rotation: CMRotationRate){
-        if fabs(rotation.x) > fabs(curMaxRotX){
-            curMaxRotX = rotation.x
-        }
-        
-        if fabs(rotation.y) > fabs(curMaxRotY){
-            curMaxRotY = rotation.y
-        }
-        
-        if fabs(rotation.z) > fabs(curMaxRotZ){
-            curMaxRotZ = rotation.z
-        }
-        
+    if fabs(rotation.x) > fabs(curMaxRotX){
+    curMaxRotX = rotation.x
     }
     
-    func updateVecSumAcc(){
+    if fabs(rotation.y) > fabs(curMaxRotY){
+    curMaxRotY = rotation.y
+    }
+    
+    if fabs(rotation.z) > fabs(curMaxRotZ){
+    curMaxRotZ = rotation.z
+    }
+    
+    }*/
+    
+    func updateVecSumAcc(acceleration: CMAcceleration){
         if vecSumAcc.count == 20 {//store up to 2s
-            vecSumAcc.removeLast()
+            //print(vecSumAcc.first)
+            vecSumAcc.removeFirst()
         }
-        vecSumAcc.append(sqrt(pow(curMaxAccX,2) + pow(curMaxAccY,2) + pow(curMaxAccZ,2)))
+        vecSumAcc.append(sqrt(pow(acceleration.x,2) + pow(acceleration.y,2) + pow(acceleration.z,2)))
     }
     
-    func updateVecSumRot(){
+    func updateVecSumRot(rotation: CMRotationRate){
         if vecSumRot.count == 20 {//store up to 2s
-            vecSumRot.removeLast()
+            // print(vecSumRot.last)
+            
+            vecSumRot.removeFirst()
         }
-        vecSumRot.append(sqrt(pow(curMaxRotX,2) + pow(curMaxRotY,2) + pow(curMaxRotZ,2)))
+        vecSumRot.append(sqrt(pow(rotation.x,2) + pow(rotation.y,2) + pow(rotation.z,2)))
     }
     
     //detecting possible start of the fall
     func freeFallDetect() -> Bool{
         var fall = false
-        if vecSumAcc.last < lowerFallThresholdAcc {//if the vecor sum of acceleration drop below the lower fall threshold
+        if vecSumAcc.first < lowerFallThresholdAcc {//if the vecor sum of acceleration drop below the lower fall threshold
             fall = true
         }
         return fall
@@ -150,11 +130,14 @@ class fallsafe: UIViewController {
     //detecting possible impact after free fall
     func impactDetect(historyAcc: [Double], historyRot: [Double]) -> Bool{
         var impact = false
-        var i = 14
+        var i = 0
         
-        while i < 18 && impact == false{
-            if historyAcc[i] >= upperFallThresholdAcc && historyRot[i] >= upperFallThresholdGyro{
+        while i < historyAcc.count && impact == false{
+            //print(historyAcc[i])
+            if historyAcc[i] >= upperFallThresholdAcc{ //&& historyRot[i] >= upperFallThresholdGyro{
                 impact = true
+                print("yeaaaa")
+                
             }
             i++
         }
@@ -163,16 +146,22 @@ class fallsafe: UIViewController {
     
     
     //check if fall occured
-    func didFallOccur() -> Bool{
+    func didFallOccur(){
         var fallOccur = false
-        if freeFallDetect() == true{
+        if freeFallDetect() == true && fallOccur == false{
             let historyAcc = vecSumAcc //create a copy of vecSumAcc
+            print(historyAcc)
             let historyRot = vecSumRot //create a copy of vecSumRot
             fallOccur = impactDetect(historyAcc, historyRot: historyRot)
+            if (fallOccur==true)
+            {
+                print("yes")
+                sendNotification()
+                //delay(1){}
+                
+            }
         }
-        return fallOccur
     }
-    
     
     //helper function
     func delay(delay:Double, closure:()->()) {
@@ -186,11 +175,9 @@ class fallsafe: UIViewController {
     
     //events that update itself every 0.1 second
     func scheduledTimerWithTimeInterval(){
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("updateVecSumAcc"), userInfo: nil, repeats: true)//updateVecSumAcc every 0.1s
-        _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("updateVecSumRot"), userInfo: nil, repeats: true)//updateVecSumRot every 0.1s
+
         delay(2) {_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("didFallOccur"), userInfo: nil, repeats: true)} //check for fall every 0.1s}
     }
-    
     
     // schedules a notificaiton via user selected method (ie. banner, alert)
     func sendNotification() {
@@ -204,7 +191,7 @@ class fallsafe: UIViewController {
             presentViewController(ac, animated: true, completion: nil)
             return
         }
-
+        
         // initialize local notification object and set properties
         let notification = UILocalNotification()
         notification.category = "FirstCategory"
@@ -216,15 +203,10 @@ class fallsafe: UIViewController {
     }
     
     // function that calls the user's emergency contacts
-    func textContacts(notification:NSNotification) {
-        let tableView = ContactTableViewController()
-        tableView.sendText()
+    func callContacts(notification:NSNotification) {
         
-        for var index = 0; index < tableView.contacts.count; index++ {
-            print(tableView.contacts[index].number)
-        }
     }
-
+    
     // returns to main menu when back button pressed
     @IBAction func backPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
