@@ -133,7 +133,6 @@ class fallsafe: UIViewController {
         var i = 0
         
         while i < historyAcc.count && impact == false{
-            //print(historyAcc[i])
             if historyAcc[i] >= upperFallThresholdAcc{ //&& historyRot[i] >= upperFallThresholdGyro{
                 impact = true
                 print("yeaaaa")
@@ -157,8 +156,6 @@ class fallsafe: UIViewController {
             {
                 print("yes")
                 sendNotification()
-                //delay(1){}
-                
             }
         }
     }
@@ -176,7 +173,7 @@ class fallsafe: UIViewController {
     //events that update itself every 0.1 second
     func scheduledTimerWithTimeInterval(){
 
-        delay(2) {_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("didFallOccur"), userInfo: nil, repeats: true)} //check for fall every 0.1s}
+        delay(2) { NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: ("didFallOccur"), userInfo: nil, repeats: true)} //check for fall every 0.1s}
     }
     
     // schedules a notificaiton via user selected method (ie. banner, alert)
@@ -195,7 +192,7 @@ class fallsafe: UIViewController {
         // initialize local notification object and set properties
         let notification = UILocalNotification()
         notification.category = "FirstCategory"
-        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        notification.fireDate = NSDate(timeIntervalSinceNow: 2)
         notification.alertBody = "Fall Detected. Did you fall?"
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["responsded": "true"]
@@ -205,6 +202,7 @@ class fallsafe: UIViewController {
     // function that calls the user's emergency contacts
     func callContacts(notification:NSNotification) {
         
+
     }
     
     // returns to main menu when back button pressed

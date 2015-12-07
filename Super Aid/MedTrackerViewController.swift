@@ -41,7 +41,6 @@ class MedTrackerViewController: UIViewController {
         
         for var index = 0; index < medViewMedications!.count; index++ {
             
-            print (medViewMedications![index].name)
             for var dateIndex = 0; dateIndex < medViewMedications![index].daysToTake.count; dateIndex++ {
                 
                 switch weekDay {

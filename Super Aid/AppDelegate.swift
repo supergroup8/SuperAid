@@ -99,6 +99,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else if identifier == "SecondAction" {
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwo", object: nil)
+            let contactsView = ContactTableViewController()
+            let contacts = contactsView.loadContacts()
+            contactsView.sendText(contacts!)
         }
         
         completionHandler()

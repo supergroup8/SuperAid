@@ -284,6 +284,11 @@
 					23F23DAE1BE8221D003015C1 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = XM6475YHW9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					23F23DC61BE8221D003015C1 = {
 						CreatedOnToolsVersion = 6.3;
