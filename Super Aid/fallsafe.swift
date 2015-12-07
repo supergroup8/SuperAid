@@ -87,9 +87,9 @@ class fallsafe: UIViewController {
         })
         
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "callContacts:", name: "actionTwo", object: nil)
         scheduledTimerWithTimeInterval()
         sendNotification()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textContacts:", name: "actionTwo", object: nil)
     }
     
 
@@ -192,69 +192,6 @@ class fallsafe: UIViewController {
     }
     
     
-    // outputAbsoluteAccelerationHistoryAndDetectFall
-    // POST: appends the absolute acceleration (i.e. sqrt(accX^2 + accY^2 + accZ^2)) to
-    //       absoluteAccelerationHistory array. If a fall is detected, set the member variable
-    //       isFall to true, otherwise false.
-    //
-    //       If a fall is detected, and there is no movement for 5 seconds (default value in settings,
-    //       can be changed, need a reference to this variable), send first notification to user and follow
-    //       the flow diagram in figure 4 of the user manual.
-    func outputAbsoluteAcccelerationHistoryAndDetectFall(acceleration: CMAcceleration){
-        // absoluteAccelerationHistory.append(sqrt(acceleration.x^2 + acceleration.y^2 + acceleration.z^2))
-        //      To make sure absoluteAccelerationHistory array does not grow to big, need to remove earlier
-        //      data in the array that is not used in the analysis. Need to set a time interval (5 - 10s)
-        //      for keeping data so that the array has a limited size.
-        
-        // Analyze absoluteAccelerationHistory to determine if a fall has occurred
-        // Call helper function: didFallOccur(acceleration: absoluteAccelerationHistory)
-        
-        // if isFall == true, then wait for 5s (default value) to see if user responds by
-        //                    calling a helper function didUserRespond()
-        
-        // if isFall == true && didUserMoveAfterFall == true, then reset these two boolean variables to
-        // false because the user has not been hurt and is responding after the fall so there is no need
-        // to send alerts.
-        
-        // if isFall == true && didUserMoveAfterFall == false, then send first notification to user and
-        // follow the flow diagram in figure 4 of the user manaul. Need to link with alert messages,
-        // notifications, GPS, and emergency contacts so that SMS alert messages can be sent to emergency
-        // contacts with their current GPS location.
-    }
-    
-    // didFallOccur -- Helper Function for outputAbsoluteAccelerationAndDetectFall
-    // PRE: isFall == false
-    // PARAMETER: only call this function with input parameter = absoluteAccelerationHistory
-    // POST: isFall is set to true if a fall is detected and false otherwise
-    func didFallOccur(acceleration: CMAcceleration){
-        // Discussion:
-        // Look at absoluteAccelerationHistory, to see if the user went from a rest position
-        // (i.e. absoluteAcceleration ~ 0 for few consecutive indices) to free falling (i.e.
-        // (absoluteAcceleration ~ 1 for a few consecutive indices) to hitting the floor (i.e.
-        // (sudden deacceleration will give an absoluteAcceleration > 1 for a couple of consecutive
-        // indices and then will = 0 if the phone is not moving once it impacted the ground.)
-        
-        // If above discussion is true, then set isFall = true otherwise false.
-        
-        // Note: need to consider other cases of falling down. The case in the above discussion is for when
-        // a person falls from being still to free-falling and then being still again.
-    }
-    
-    // didUserRespond -- Helper Function for outputAbsoluteAccelerationAndDetectFall
-    // PRE: isFall == true
-    // POST: didUserMoveAfterFall is true if user has motion activity after 5s of falling, otherwise false
-    func didUserRespond(acceleration: CMAcceleration){
-        // Need access to CMMotionActivity class's member variables:
-        // Bool stationary
-        // Bool walking
-        // Bool running
-        // Bool automotive
-        
-        // For 5 seconds (default value)
-        //      if (!stationary || walking || running || automotive){ didUserMoveAfterFall = true; exit }
-        //      else { didUserMoveAfterFall = false }
-    }
-
     // schedules a notificaiton via user selected method (ie. banner, alert)
     func sendNotification() {
         
@@ -279,8 +216,13 @@ class fallsafe: UIViewController {
     }
     
     // function that calls the user's emergency contacts
-    func callContacts(notification:NSNotification) {
+    func textContacts(notification:NSNotification) {
+        let tableView = ContactTableViewController()
+        tableView.sendText()
         
+        for var index = 0; index < tableView.contacts.count; index++ {
+            print(tableView.contacts[index].number)
+        }
     }
 
     // returns to main menu when back button pressed

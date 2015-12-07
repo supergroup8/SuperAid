@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // completion handler functions
     // POST: performs an action depending on the user's selected action when the notification sends
-    //       firstAction pressed: update log file that a false fall has been detected
+    //       firstAction pressed: nothing performed. Will look into logging false fall
     //       secondAction pressed: fall detected, post notifiacation for app to call emergency contacts
     func application(application: UIApplication, handActionWithIdentifier identifier:String!, completionHandler: (() -> Void)!) {
         

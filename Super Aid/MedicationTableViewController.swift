@@ -41,7 +41,6 @@ class MedicationTableViewController: UITableViewController {
             // load sample medication
             loadSampleMedication()
         }
-        
     }
     
     func loadSampleMedication() {
@@ -172,6 +171,27 @@ class MedicationTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    // MARK: Notificaitons
+    func scheduleNotification(medication: Medication) {
+        
+        /*let dateComponent:NSDateComponents = NSDateComponents()
+        dateComponent.hour = 10
+        dateComponent.minute = 00
+        dateComponent.timeZone = NSTimeZone.systemTimeZone()
+        
+        let calendar:NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let date:NSDate = calendar.dateFromComponents(dateComponent)!*/
+        
+        let notification:UILocalNotification = UILocalNotification()
+        notification.alertBody = "Reminder to take " + medication.name
+        //notification.fireDate = date
+        notification.fireDate = NSDate(timeIntervalSinceNow: 5)
+        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["responsded": "true"]
+        notification.repeatInterval = NSCalendarUnit.Weekday
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
     
     // MARK: NSCoding
     

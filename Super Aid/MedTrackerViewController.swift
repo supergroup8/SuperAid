@@ -18,7 +18,7 @@ class MedTrackerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        remind()
         // Do any additional setup after loading the view.
     }
 
@@ -30,7 +30,49 @@ class MedTrackerViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
+    func remind () {
+        
+        let medView = MedicationTableViewController()
+        let medViewMedications = medView.medications
+        let date = NSDate()
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let myComponents = myCalendar.components(.Weekday, fromDate: date)
+        let weekDay = myComponents.weekday
+        
+        for var index = 0; index < medViewMedications.count; index++ {
+            
+            print (medViewMedications[index].name)
+            for var dateIndex = 0; dateIndex < medViewMedications[index].daysToTake.count; dateIndex++ {
+                
+                switch weekDay {
+                    
+                case 1: if medViewMedications[index].daysToTake[dateIndex] == "Sun" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 2: if medViewMedications[index].daysToTake[dateIndex] == "Mon" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 3: if medViewMedications[index].daysToTake[dateIndex] == "Tue" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 4: if medViewMedications[index].daysToTake[dateIndex] == "Wed" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 5: if medViewMedications[index].daysToTake[dateIndex] == "Thu" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 6: if medViewMedications[index].daysToTake[dateIndex] == "Fri" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                case 7: if medViewMedications[index].daysToTake[dateIndex] == "Sat" {
+                    medView.scheduleNotification(medView.medications[index])
+                    }
+                default: print("weekday not found")
+                }
+            }
+        }
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

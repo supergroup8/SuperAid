@@ -29,8 +29,9 @@
  *************************************************************************************************************/
 
 import UIKit
+import MessageUI
 
-class ContactTableViewController: UITableViewController {
+class ContactTableViewController: UITableViewController, MFMessageComposeViewControllerDelegate {
     
     // MARK: Properties
     var contacts = [Contact]()
@@ -48,15 +49,17 @@ class ContactTableViewController: UITableViewController {
             // load sample contacts
             loadSampleContacts()
         }
+        
+        // sendText()
 
     }
     
     func loadSampleContacts() {
         
-        let c1 = Contact(name: "John", alertMessage: "a1", number: "000-000-0000")!
-        let c2 = Contact(name: "Victor", alertMessage: "a2", number: "111-111-1111")!
-        let c3 = Contact(name: "Jerry", alertMessage: "a3", number: "222-222-2222")!
-        let c4 = Contact(name: "Gary", alertMessage: "a4", number: "333-333-3333")!
+        let c1 = Contact(name: "John", alertMessage: "Default", number: "000-000-0000")!
+        let c2 = Contact(name: "Victor", alertMessage: "Default", number: "111-111-1111")!
+        let c3 = Contact(name: "Jerry", alertMessage: "Default", number: "222-222-2222")!
+        let c4 = Contact(name: "Gary", alertMessage: "Default", number: "333-333-3333")!
         
         contacts += [c1, c2, c3, c4]
     }
@@ -192,6 +195,35 @@ class ContactTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // sends text messages to user's emergeny contacts
+    func sendText() {
+        if MFMessageComposeViewController.canSendText() {
+            
+            let controller = MFMessageComposeViewController()
+            // get user's device name (in the form user's iPhone)
+            let deviceName = UIDevice.currentDevice().name
+            // remove 's iPhone from the deviceName string
+            let userName = deviceName.stringByReplacingOccurrencesOfString("'s iPhone", withString: "")
+            controller.body = userName + " Has fallen. Please send help."
+            // set recipients to contacts
+            for var index = 0; index < contacts.count; index++ {
+                controller.recipients?.append(contacts[index].number)
+            }
+            controller.messageComposeDelegate = self
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+    }
+    
+    // MARK: MFMEssageComposeViewControllerDelegate
+    
+    // dismisses sms screen
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
     
     // MARK: NSCoding
     
